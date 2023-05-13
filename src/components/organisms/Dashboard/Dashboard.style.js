@@ -10,7 +10,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'Searchbar Searchbar'
-    'Congratulations Congratulations'
+    'Api Api'
     'Profit Sales'
     'Payments Transactions'
     'TotalRevenue TotalRevenue'
@@ -22,7 +22,7 @@ export const Container = styled.div`
     grid-template-columns: 0.6fr 0.6fr 0.5fr 0.5fr;
     grid-template-areas:
       'Searchbar Searchbar Searchbar Searchbar'
-      'Congratulations Congratulations Profit Sales'
+      'Api Api Profit Sales'
       'TotalRevenue TotalRevenue Payments Transactions'
       'TotalRevenue TotalRevenue ProfileReport ProfileReport';
   }
@@ -40,10 +40,18 @@ export const Searchbar = styled.div`
     flex-direction: row;
   }
 `;
-export const Congratulations = styled.div`
-  grid-area: Congratulations;
+export const Api = styled.div`
+  grid-area: Api;
   background-color: ${({ theme }) => theme.colors.element};
   box-shadow: 0px 4px 5px -2px rgba(66, 68, 90, 1);
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 80%;
+  }
 `;
 
 export const Profit = styled.div`

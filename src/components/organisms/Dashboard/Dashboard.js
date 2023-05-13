@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchInput from '../../molecues/SearchInput/SearchInput';
 import UserAvatar from '../../molecues/UserAvatar/UserAvatar';
 import {
-  Congratulations,
+  Api,
   Container,
   Payments,
   ProfileReport,
@@ -12,15 +12,25 @@ import {
   TotalRevenue,
   Transactions,
 } from './Dashboard.style';
+import axios from 'axios';
 
 const Dashboard = () => {
+  const [apiImage, setApiImage] = useState('');
+
+  useEffect(() => {
+    axios.get(`https://dog.ceo/api/breeds/image/random`).then((res) => {
+      setApiImage(res.data.message);
+    });
+  }, []);
   return (
     <Container>
       <Searchbar>
         <SearchInput />
         <UserAvatar />
       </Searchbar>
-      <Congratulations>cong</Congratulations>
+      <Api>
+        <img src={apiImage} alt="dog"></img>
+      </Api>
       <Profit>profit</Profit>
       <Sales>Sales</Sales>
       <TotalRevenue>TotalRevenue</TotalRevenue>
