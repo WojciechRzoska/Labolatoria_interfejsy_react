@@ -1,20 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
-import Dashboard from '../components/organisms/Dashboard/Dashboard';
-import MainTemplate from '../components/template/MainTemplate/MainTemplate';
-import AccountSettings from './AccountSettings/AccountSettings';
-import About from './About/About';
+import UnAuthenticatedApp from './UnAuthenticatedApp';
+import { useContext } from 'react';
+import AuthenticatedApp from './AuthenticatedApp';
+import { FontSizeContext } from '../providers/FontProvider';
 
 function App() {
-  return (
-    <MainTemplate>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
+  const { isLogged } = useContext(FontSizeContext);
 
-        <Route path="/about" element={<About />} />
-        <Route path="/account-settings" element={<AccountSettings />} />
-      </Routes>
-    </MainTemplate>
-  );
+  return <>{isLogged ? <AuthenticatedApp /> : <UnAuthenticatedApp />}</>;
 }
-
 export default App;

@@ -8,11 +8,13 @@ export const FontSizeContext = createContext({
   increaseFont: () => {},
   reduceFont: () => {},
   darkTheme: false,
+  logged: false,
 });
 
 const FontProvider = ({ children }) => {
   const [fontSize, setFontSize] = useState(16);
   const [isDarkTheme, setDarkTheme] = useState(false);
+  const [isLogged, setLogged] = useState(false);
 
   const increaseFont = () => {
     if (fontSize <= 32) setFontSize(fontSize + 1);
@@ -20,13 +22,27 @@ const FontProvider = ({ children }) => {
   const reduceFont = () => {
     if (fontSize >= 8) setFontSize(fontSize - 1);
   };
-
+  const handleLogin = () => {
+    setLogged(true);
+    console.log(isLogged);
+  };
   const handleTheme = () => {
     setDarkTheme(!isDarkTheme);
   };
+  const handleLogout = () => {
+    setLogged(false);
+  };
   return (
     <FontSizeContext.Provider
-      value={{ fontSize, increaseFont, reduceFont, handleTheme }}
+      value={{
+        fontSize,
+        increaseFont,
+        reduceFont,
+        handleTheme,
+        handleLogin,
+        isLogged,
+        handleLogout,
+      }}
     >
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <GlobalStyle fontSize={fontSize} />

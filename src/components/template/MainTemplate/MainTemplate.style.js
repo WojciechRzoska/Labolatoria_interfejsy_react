@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: 100%;
   flex-direction: column;
 
+
   background-color: ${({ theme }) => theme.colors.background};
   @media (min-width: 63em) {
     height: 100vh;

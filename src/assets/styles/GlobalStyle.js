@@ -6,6 +6,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   html,button{
     font-size: ${(props) => `${props.fontSize}px`};
+    overflow-x:hidden;
+ 
   }
   img,
   picture {
